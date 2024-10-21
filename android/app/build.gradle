@@ -1,0 +1,43 @@
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
+    id "dev.flutter.flutter-gradle-plugin"
+}
+
+android {
+    // Specify your app's namespace (should match your package structure).
+    namespace = "com.example.baranguard"  // Ensure it matches your package name.
+
+    compileSdkVersion 34 // Update to 34 to resolve the SDK version issues.
+    ndkVersion = flutter.ndkVersion // Optional: Specify NDK version if needed.
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"  // Set JVM target version.
+    }
+
+    defaultConfig {
+        applicationId = "com.example.baranguard"  // Ensure this matches your namespace.
+        minSdkVersion 21
+        targetSdkVersion 34 // Update this to 34 as well.
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        release {
+            // Use debug signing for release builds to simplify testing.
+            signingConfig = signingConfigs.debug
+        }
+    }
+}
+
+// Ensure the Flutter source is correctly linked.
+flutter {
+    source = "../.."  // Adjust if your Flutter project structure differs.
+}
